@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-fs@t$$#kcgmy*ok2orwyk!&9tdrm(^w+dvvqkdn9b=914_i+f4
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-#
+#'64.227.166.84', 'www.demo.demomicom.com', 'demo.demomicom.com',
 ALLOWED_HOSTS = ['127.0.0.1', '64.227.166.84', 'www.demo.demomicom.com', 'demo.demomicom.com',]
 
 
