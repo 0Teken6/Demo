@@ -2,13 +2,20 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import permission_required, login_required
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.contrib.auth.views import LoginView
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import CreateView, FormView, ListView, DetailView, DeleteView, UpdateView
 from django.contrib.auth.models import Group
 
 from .forms import UserRegistrationForm, LoginUserForm, UserUpdateForm, ProfileUpdateForm
 from .models import Review
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
 
 @login_required
@@ -26,6 +33,8 @@ def regiser_user(request):
         form = UserRegistrationForm()
     return render(request, 'users/create_employee.html', {'form': form})
 
+
+@method_decorator(csrf_exempt, name='dispatch')
 class LoginUser(LoginView):
     form_class = LoginUserForm
     template_name = 'users/login.html'

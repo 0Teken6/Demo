@@ -15,5 +15,6 @@ urlpatterns = [
     path('profile/<slug:username>/reviews/', views.UserReviewsView.as_view(), name='user_reviews'),
     path('profile/<slug:username>/create-review/', views.ReviewCreateView.as_view(), name='create-review'),
 
+
 ]
 
